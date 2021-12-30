@@ -37,12 +37,6 @@ export type Action =
   | { type: typeof ActionType.AddBuilding; value: BuildingType }
   | { type: typeof ActionType.RemoveBuilding; value: string };
 
-const getFinalField = (
-  field: string,
-  fieldName: "credits" | "ore",
-  elements: BuildingType[]
-) => String(Number(field) - sumBy(elements, (it) => Number(it[fieldName])));
-
 export const reducer = (state: RoundPlannerState, action: Action) => {
   switch (action.type) {
     case ActionType.Credits:

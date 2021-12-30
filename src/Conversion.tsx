@@ -1,5 +1,5 @@
 import { useReducer } from "react";
-import { Flex, Select, TextField } from "./components";
+import { Flex, Select, Text, TextField } from "./components";
 import {
   ConversionKind,
   Conversions,
@@ -22,6 +22,7 @@ const ResourceSelect = ({
     value={value}
     onChange={(e) => onChange(e.target.value as ResourceKind)}
     disabled={options.length === 1}
+    css={{ width: "$9" }}
     {...rest}
   >
     {options.map(([key, val]) => (
@@ -159,12 +160,9 @@ export const Conversion = () => {
   return (
     <>
       <h3>Free Conversions</h3>
-      <Flex direction="column" gap="2">
-        <Flex gap="1">
+      <Flex gap="2">
+        <Flex gap="1" direction="column">
           <ResourceSelect
-            css={{
-              flex: 1,
-            }}
             value={state.selectFrom}
             onChange={(value: ResourceKind) => {
               dispatch({ type: ActionType.SelectFrom, value });
@@ -172,20 +170,17 @@ export const Conversion = () => {
             options={state.selectFromOptions}
           />
           <TextField
-            css={{
-              flex: 3,
-            }}
+            size="2"
+            inputMode="numeric"
+            pattern="[0-9]*"
             value={state.inputFrom}
             onChange={({ target: { value } }) => {
               dispatch({ type: ActionType.InputFrom, value });
             }}
           />
         </Flex>
-        <Flex gap="1">
+        <Flex gap="1" direction="column">
           <ResourceSelect
-            css={{
-              flex: 1,
-            }}
             value={state.selectTo}
             onChange={(value: ResourceKind) => {
               dispatch({ type: ActionType.SelectTo, value });
@@ -193,9 +188,9 @@ export const Conversion = () => {
             options={state.selectToOptions}
           />
           <TextField
-            css={{
-              flex: 3,
-            }}
+            size="2"
+            inputMode="numeric"
+            pattern="[0-9]*"
             value={state.inputTo}
             onChange={({ target: { value } }) => {
               dispatch({ type: ActionType.InputTo, value });
@@ -203,24 +198,11 @@ export const Conversion = () => {
           />
         </Flex>
         {state.mod !== "0" && (
-          <Flex gap="1">
-            <Flex
-              css={{
-                flex: 1,
-                fontSize: "$1",
-              }}
-              justify="center"
-              align="center"
-            >
-              + ({Resources[state.selectFrom]})
-            </Flex>
-            <TextField
-              css={{
-                flex: 3,
-              }}
-              value={state.mod}
-              readOnly
-            />
+          <Flex gap="1" direction="column" justify="end">
+            <Text size="1" css={{ height: "$4" }}>
+              ({Resources[state.selectFrom]})
+            </Text>
+            <TextField size="2" value={state.mod} readOnly />
           </Flex>
         )}
       </Flex>

@@ -6,6 +6,7 @@ function App() {
   return (
     <Box
       css={{
+        p: "$2",
         m: "0 auto",
         maxWidth: 450,
       }}
