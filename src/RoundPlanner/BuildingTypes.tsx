@@ -6,7 +6,6 @@ import {
   Button,
   Card,
   Flex,
-  Label,
   Text,
   TextField,
   NumberField,
@@ -15,9 +14,9 @@ import { Resources } from "../constants";
 import { ActionType, RoundPlannerProps } from "./reducer";
 
 const initialState = {
-  title: "Mine",
-  credits: "2",
-  ore: "1",
+  title: "",
+  credits: "",
+  ore: "",
 };
 
 const Building = ({
@@ -33,6 +32,7 @@ const Building = ({
         <TextField
           label="Title"
           value={title}
+          placeholder="Mine"
           onChange={({ target: { value } }) =>
             setInternal((state) => ({ ...state, title: value }))
           }
@@ -41,6 +41,7 @@ const Building = ({
           <NumberField
             label={Resources.Credits}
             value={credits}
+            placeholder="2"
             onChange={({ target: { value } }) => {
               setInternal((state) => ({ ...state, credits: value }));
             }}
@@ -48,6 +49,7 @@ const Building = ({
           <NumberField
             label={Resources.Ore}
             value={ore}
+            placeholder="1"
             onChange={({ target: { value } }) => {
               setInternal((state) => ({ ...state, ore: value }));
             }}

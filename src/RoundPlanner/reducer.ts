@@ -3,13 +3,13 @@ import { Dispatch } from "react";
 import { Resources } from "../constants";
 
 export const initialState = {
-  credits: "0",
-  ore: "0",
-  qic: "0",
-  powerBowl3: "0",
+  credits: "",
+  ore: "",
+  qic: "",
+  powerBowl3: "",
   buildings: [] as BuildingType[],
-  totalCredits: "0",
-  totalOre: "0",
+  totalCredits: "",
+  totalOre: "",
 };
 export type RoundPlannerState = typeof initialState;
 

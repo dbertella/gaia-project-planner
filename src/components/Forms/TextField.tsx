@@ -4,11 +4,11 @@ import { Box, Label, InputBase } from "..";
 export const TextField = forwardRef<
   HTMLInputElement,
   {
-    label: string;
+    label?: string;
   } & ComponentProps<typeof InputBase>
 >(({ label, value, onChange, ...rest }, ref) => (
   <Box>
-    <Label>{label}</Label>
+    {label && <Label>{label}</Label>}
     <InputBase
       ref={ref}
       value={value}

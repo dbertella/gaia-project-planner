@@ -10,6 +10,7 @@ export const NumberField = forwardRef<
     size="2"
     inputMode="numeric"
     pattern="[0-9]*"
+    placeholder="0"
     {...props}
   />
 ));

@@ -2,7 +2,7 @@ import { Box, Flex, NumberField } from "../components";
 import { Resources } from "../constants";
 import { RoundPlannerProps } from "./reducer";
 
-export const FinalResources = ({ state, dispatch }: RoundPlannerProps) => {
+export const FinalResources = ({ state }: RoundPlannerProps) => {
   return (
     <>
       <Box as="h3">Final Resources</Box>
@@ -18,11 +18,15 @@ export const FinalResources = ({ state, dispatch }: RoundPlannerProps) => {
             readOnly
             value={Number(state.ore) - Number(state.totalOre)}
           />
-          <NumberField label={Resources.QIC} readOnly value={state.qic} />
+          <NumberField
+            label={Resources.QIC}
+            readOnly
+            value={Number(state.qic)}
+          />
           <NumberField
             label={Resources.PowerBowl3}
             readOnly
-            value={state.powerBowl3}
+            value={Number(state.powerBowl3)}
           />
         </Flex>
       </Flex>
