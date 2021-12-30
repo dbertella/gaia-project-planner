@@ -1,7 +1,16 @@
 import { useState } from "react";
 import { sumBy } from "lodash";
 import { v4 as uuid } from "uuid";
-import { Box, Button, Card, Flex, Label, Text, TextField } from "../components";
+import {
+  Box,
+  Button,
+  Card,
+  Flex,
+  Label,
+  Text,
+  TextField,
+  NumberField,
+} from "../components";
 import { Resources } from "../constants";
 import { ActionType, RoundPlannerProps } from "./reducer";
 
@@ -21,40 +30,28 @@ const Building = ({
   return (
     <Card css={{ p: "$2" }}>
       <Flex direction="column" gap="2">
-        <Box>
-          <Label>Title</Label>
-          <TextField
-            value={title}
-            onChange={({ target: { value } }) =>
-              setInternal((state) => ({ ...state, title: value }))
-            }
-          />
-        </Box>
+        <TextField
+          label="Title"
+          value={title}
+          onChange={({ target: { value } }) =>
+            setInternal((state) => ({ ...state, title: value }))
+          }
+        />
         <Flex gap="4" justify="center">
-          <Box>
-            <Label>{Resources.Credits}</Label>
-            <TextField
-              size="2"
-              inputMode="numeric"
-              pattern="[0-9]*"
-              value={credits}
-              onChange={({ target: { value } }) => {
-                setInternal((state) => ({ ...state, credits: value }));
-              }}
-            />
-          </Box>
-          <Box>
-            <Label>{Resources.Ore}</Label>
-            <TextField
-              size="2"
-              inputMode="numeric"
-              pattern="[0-9]*"
-              value={ore}
-              onChange={({ target: { value } }) => {
-                setInternal((state) => ({ ...state, ore: value }));
-              }}
-            />
-          </Box>
+          <NumberField
+            label={Resources.Credits}
+            value={credits}
+            onChange={({ target: { value } }) => {
+              setInternal((state) => ({ ...state, credits: value }));
+            }}
+          />
+          <NumberField
+            label={Resources.Ore}
+            value={ore}
+            onChange={({ target: { value } }) => {
+              setInternal((state) => ({ ...state, ore: value }));
+            }}
+          />
         </Flex>
         <Button
           onClick={() => {

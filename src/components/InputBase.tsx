@@ -1,6 +1,6 @@
 import { styled } from "../stitches.config";
 
-export const TextField = styled("input", {
+export const InputBase = styled("input", {
   // Reset
   appearance: "none",
   borderWidth: "0",
