@@ -29,9 +29,9 @@ export const Button = styled("button", {
   fontVariantNumeric: "tabular-nums",
 
   "&:disabled": {
-    backgroundColor: "$grey2",
-    boxShadow: "inset 0 0 0 1px $colors$grey7",
-    color: "$grey8",
+    backgroundColor: "$gray2",
+    boxShadow: "inset 0 0 0 1px $colors$gray7",
+    color: "$gray8",
     pointerEvents: "none",
   },
 
@@ -62,24 +62,24 @@ export const Button = styled("button", {
     variant: {
       gray: {
         backgroundColor: "$background",
-        boxShadow: "inset 0 0 0 1px $colors$grey7",
+        boxShadow: "inset 0 0 0 1px $colors$gray7",
         color: "$text",
         "@hover": {
           "&:hover": {
-            boxShadow: "inset 0 0 0 1px $colors$grey8",
+            boxShadow: "inset 0 0 0 1px $colors$gray8",
           },
         },
         "&:active": {
-          backgroundColor: "$grey2",
-          boxShadow: "inset 0 0 0 1px $colors$grey8",
+          backgroundColor: "$gray2",
+          boxShadow: "inset 0 0 0 1px $colors$gray8",
         },
         "&:focus": {
-          boxShadow: "inset 0 0 0 1px $colors$grey8, 0 0 0 1px $colors$grey8",
+          boxShadow: "inset 0 0 0 1px $colors$gray8, 0 0 0 1px $colors$gray8",
         },
         '&[data-radix-popover-trigger][data-state="open"], &[data-radix-dropdown-menu-trigger][data-state="open"]':
           {
-            backgroundColor: "$grey4",
-            boxShadow: "inset 0 0 0 1px $colors$grey8",
+            backgroundColor: "$gray4",
+            boxShadow: "inset 0 0 0 1px $colors$gray8",
           },
       },
       blue: {
@@ -128,11 +128,11 @@ export const Button = styled("button", {
       },
       red: {
         backgroundColor: "$background",
-        boxShadow: "inset 0 0 0 1px $colors$grey7",
+        boxShadow: "inset 0 0 0 1px $colors$gray7",
         color: "$red",
         "@hover": {
           "&:hover": {
-            boxShadow: "inset 0 0 0 1px $colors$grey8",
+            boxShadow: "inset 0 0 0 1px $colors$gray8",
           },
         },
         "&:active": {
@@ -183,38 +183,38 @@ export const Button = styled("button", {
     },
     state: {
       active: {
-        backgroundColor: "$grey4",
-        boxShadow: "inset 0 0 0 1px $colors$grey8",
-        color: "$grey11",
+        backgroundColor: "$gray4",
+        boxShadow: "inset 0 0 0 1px $colors$gray8",
+        color: "$gray11",
         "@hover": {
           "&:hover": {
-            backgroundColor: "$grey5",
-            boxShadow: "inset 0 0 0 1px $colors$grey8",
+            backgroundColor: "$gray5",
+            boxShadow: "inset 0 0 0 1px $colors$gray8",
           },
         },
         "&:active": {
-          backgroundColor: "$grey5",
+          backgroundColor: "$gray5",
         },
         "&:focus": {
-          boxShadow: "inset 0 0 0 1px $colors$grey8, 0 0 0 1px $colors$grey8",
+          boxShadow: "inset 0 0 0 1px $colors$gray8, 0 0 0 1px $colors$gray8",
         },
       },
       waiting: {
-        backgroundColor: "$grey4",
-        boxShadow: "inset 0 0 0 1px $colors$grey8",
+        backgroundColor: "$gray4",
+        boxShadow: "inset 0 0 0 1px $colors$gray8",
         color: "transparent",
         pointerEvents: "none",
         "@hover": {
           "&:hover": {
-            backgroundColor: "$grey5",
-            boxShadow: "inset 0 0 0 1px $colors$grey8",
+            backgroundColor: "$gray5",
+            boxShadow: "inset 0 0 0 1px $colors$gray8",
           },
         },
         "&:active": {
-          backgroundColor: "$grey5",
+          backgroundColor: "$gray5",
         },
         "&:focus": {
-          boxShadow: "inset 0 0 0 1px $colors$grey8",
+          boxShadow: "inset 0 0 0 1px $colors$gray8",
         },
       },
     },

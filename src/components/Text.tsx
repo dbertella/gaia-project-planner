@@ -56,8 +56,8 @@ export const Text = styled("span", {
       green: {
         color: "$green",
       },
-      grey: {
-        color: "$grey1",
+      gray: {
+        color: "$gray1",
       },
       contrast: {
         color: "$text",

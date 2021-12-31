@@ -18,6 +18,7 @@ export const ActionType = {
   Ore: Resources.Ore,
   QIC: Resources.QIC,
   PowerBowl3: Resources.PowerBowl3,
+  Buildings: "Buildings",
   AddBuilding: "AddBuilding",
   RemoveBuilding: "RemoveBuilding",
 } as const;
@@ -34,6 +35,7 @@ export type Action =
   | { type: typeof ActionType.Ore; value: string }
   | { type: typeof ActionType.QIC; value: string }
   | { type: typeof ActionType.PowerBowl3; value: string }
+  | { type: typeof ActionType.Buildings; value: BuildingType[] }
   | { type: typeof ActionType.AddBuilding; value: BuildingType }
   | { type: typeof ActionType.RemoveBuilding; value: string };
 
@@ -59,6 +61,14 @@ export const reducer = (state: RoundPlannerState, action: Action) => {
         ...state,
         powerBowl3: action.value,
       };
+    case ActionType.Buildings: {
+      return {
+        ...state,
+        buildings: action.value,
+        totalCredits: String(sumBy(action.value, (it) => Number(it.credits))),
+        totalOre: String(sumBy(action.value, (it) => Number(it.ore))),
+      };
+    }
     case ActionType.AddBuilding: {
       const buildings = [...state.buildings, action.value];
       return {

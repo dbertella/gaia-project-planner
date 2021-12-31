@@ -20,7 +20,7 @@ export const InputBase = styled("input", {
 
   // Custom
   backgroundColor: "$background",
-  boxShadow: "inset 0 0 0 1px $colors$grey1",
+  boxShadow: "inset 0 0 0 1px $colors$gray7",
   color: "$text",
   fontVariantNumeric: "tabular-nums",
 
@@ -42,21 +42,21 @@ export const InputBase = styled("input", {
     },
   },
   "&::placeholder": {
-    color: "$grey1",
+    color: "$gray9",
   },
   "&:disabled": {
     pointerEvents: "none",
-    backgroundColor: "$grey2",
-    color: "$grey1",
+    backgroundColor: "$gray2",
+    color: "$gray8",
     cursor: "not-allowed",
     "&::placeholder": {
-      color: "$grey1",
+      color: "$gray7",
     },
   },
   "&:read-only": {
-    backgroundColor: "$grey1",
+    backgroundColor: "$gray2",
     "&:focus": {
-      boxShadow: "inset 0px 0px 0px 1px $colors$grey1",
+      boxShadow: "inset 0px 0px 0px 1px $colors$gray7",
     },
   },
 
@@ -89,7 +89,7 @@ export const InputBase = styled("input", {
         backgroundColor: "transparent",
         "@hover": {
           "&:hover": {
-            boxShadow: "inset 0 0 0 1px $colors$grey2",
+            boxShadow: "inset 0 0 0 1px $colors$gray7",
           },
         },
         "&:focus": {
