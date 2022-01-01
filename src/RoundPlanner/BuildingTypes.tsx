@@ -12,8 +12,15 @@ import {
   NumberField,
   Label,
 } from "../components";
-import { Resources } from "../constants";
-import { ActionType, RoundPlannerProps } from "./reducer";
+import {
+  ACADEMY,
+  MINE,
+  PLANETARY_INSTITUTE,
+  RESEARCH_LAB,
+  Resources,
+  TRADING_STATION,
+} from "../constants";
+import { ActionType, RoundPlannerProps } from "../components/planner-reducer";
 
 const initialState = {
   title: "",
@@ -22,126 +29,6 @@ const initialState = {
   qic: "",
   powerBowl3: "",
 };
-
-const MINE = { powerBowl3: "", qic: "", title: "Mine", credits: "2", ore: "1" };
-const TRADING_STATION = {
-  powerBowl3: "",
-  qic: "",
-  title: "Trading Station",
-  credits: "3",
-  ore: "2",
-};
-const RESEARCH_LAB = {
-  powerBowl3: "",
-  qic: "",
-  title: "Research Lab",
-  credits: "5",
-  ore: "3",
-};
-const PLANETARY_INSTITUTE = {
-  powerBowl3: "",
-  qic: "",
-  title: "Planetary Institute",
-  credits: "6",
-  ore: "4",
-};
-const ACADEMY = {
-  powerBowl3: "",
-  qic: "",
-  title: "Academy",
-  credits: "6",
-  ore: "6",
-};
-
-// RL+TS+M
-const STANDARD_OPENING_1 = [
-  TRADING_STATION,
-  RESEARCH_LAB,
-  TRADING_STATION,
-  MINE,
-];
-
-const STANDARD_OPENING_2 = [TRADING_STATION, RESEARCH_LAB, ACADEMY];
-const STANDARD_OPENING_3 = [TRADING_STATION, RESEARCH_LAB, MINE, MINE, MINE];
-const STANDARD_OPENING_4 = [
-  TRADING_STATION,
-  PLANETARY_INSTITUTE,
-  TRADING_STATION,
-  RESEARCH_LAB,
-];
-const STANDARD_OPENING_5 = [
-  TRADING_STATION,
-  PLANETARY_INSTITUTE,
-  TRADING_STATION,
-  MINE,
-];
-
-const withUuid = (building: typeof initialState) => ({
-  ...building,
-  id: uuid(),
-});
-
-const StandardOpenings = ({
-  dispatch,
-}: {
-  dispatch: RoundPlannerProps["dispatch"];
-}) => (
-  <Box>
-    <Label>Standard Openings</Label>
-    <Flex gap="1">
-      <Button
-        onClick={() => {
-          dispatch({
-            type: ActionType.Buildings,
-            value: STANDARD_OPENING_1.map(withUuid),
-          });
-        }}
-      >
-        RL+TS+M
-      </Button>
-      <Button
-        onClick={() =>
-          dispatch({
-            type: ActionType.Buildings,
-            value: STANDARD_OPENING_2.map(withUuid),
-          })
-        }
-      >
-        A+M
-      </Button>
-      <Button
-        onClick={() =>
-          dispatch({
-            type: ActionType.Buildings,
-            value: STANDARD_OPENING_3.map(withUuid),
-          })
-        }
-      >
-        RL+M+M+M+M
-      </Button>
-      <Button
-        onClick={() =>
-          dispatch({
-            type: ActionType.Buildings,
-            value: STANDARD_OPENING_4.map(withUuid),
-          })
-        }
-      >
-        PI+RL
-      </Button>
-      <Button
-        onClick={() =>
-          dispatch({
-            type: ActionType.Buildings,
-            value: STANDARD_OPENING_5.map(withUuid),
-          })
-        }
-      >
-        PI+TS+M
-      </Button>
-    </Flex>
-  </Box>
-);
 
 const Buildings = ({
   dispatch,
@@ -386,7 +273,6 @@ export const BuildingTypes = ({ state, dispatch }: RoundPlannerProps) => {
   return (
     <Flex direction="column" gap="2">
       <Box as="h3">Buildings</Box>
-      <StandardOpenings dispatch={dispatch} />
       <Buildings dispatch={dispatch} />
       <Planned buildings={state.buildings} dispatch={dispatch} />
     </Flex>

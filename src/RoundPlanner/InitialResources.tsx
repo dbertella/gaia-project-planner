@@ -1,7 +1,7 @@
 import { Box, Flex } from "../components";
 import { NumberField } from "../components/Forms/NumberField";
 import { Resources } from "../constants";
-import { ActionType, RoundPlannerProps } from "./reducer";
+import { ActionType, RoundPlannerProps } from "../components/planner-reducer";
 
 export const InitialResources = ({ state, dispatch }: RoundPlannerProps) => {
   return (

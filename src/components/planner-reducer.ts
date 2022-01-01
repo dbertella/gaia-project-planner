@@ -2,18 +2,26 @@ import { sumBy } from "lodash";
 import { Dispatch } from "react";
 import { Resources } from "../constants";
 
-export const initialState = {
-  credits: "",
-  ore: "",
-  qic: "",
-  powerBowl3: "",
-  buildings: [] as BuildingType[],
-  totalCredits: "",
-  totalOre: "",
-  totalQic: "",
-  totalPowerBowl3: "",
+export type BuildingType = {
+  id: string;
+  title: string;
+  credits: string;
+  ore: string;
+  qic: string;
+  powerBowl3: string;
 };
-export type RoundPlannerState = typeof initialState;
+
+export type RoundPlannerState = {
+  credits: string;
+  ore: string;
+  qic: string;
+  powerBowl3: string;
+  buildings: BuildingType[];
+  totalCredits: string;
+  totalOre: string;
+  totalQic: string;
+  totalPowerBowl3: string;
+};
 
 export const ActionType = {
   Credits: Resources.Credits,
@@ -24,15 +32,6 @@ export const ActionType = {
   AddBuilding: "AddBuilding",
   RemoveBuilding: "RemoveBuilding",
 } as const;
-
-type BuildingType = {
-  id: string;
-  title: string;
-  credits: string;
-  ore: string;
-  qic: string;
-  powerBowl3: string;
-};
 
 export type Action =
   | { type: typeof ActionType.Credits; value: string }

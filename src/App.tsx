@@ -2,6 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import { Box, NavBar } from "./components";
 import { Conversion } from "./Conversion";
 import { RoundPlanner } from "./RoundPlanner";
+import { StandardOpenings } from "./StandardOpenings";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <h1>A Gaia Project Planner</h1>
         <Routes>
           <Route path="/" element={<RoundPlanner />} />
+          <Route path="/openings" element={<StandardOpenings />} />
           <Route path="conversion" element={<Conversion />} />
         </Routes>
       </Box>

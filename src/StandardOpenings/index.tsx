@@ -1,28 +1,29 @@
 import { useReducer } from "react";
 import { Box } from "../components";
-import { BuildingTypes } from "./BuildingTypes";
-import { FinalResources } from "./FinalResources";
-import { InitialResources } from "./InitialResources";
 import { reducer } from "../components/planner-reducer";
+import { BuildingTypes } from "../RoundPlanner/BuildingTypes";
+import { FinalResources } from "../RoundPlanner/FinalResources";
+import { InitialResources } from "../RoundPlanner/InitialResources";
+import { OpeningsType } from "./OpeningsType";
 
 const initialState = {
-  credits: "",
-  ore: "",
-  qic: "",
+  credits: "15",
+  ore: "7",
+  qic: "1",
   powerBowl3: "",
   buildings: [],
-  totalCredits: "",
-  totalOre: "",
-  totalQic: "",
+  totalCredits: "15",
+  totalOre: "7",
+  totalQic: "1",
   totalPowerBowl3: "",
 };
-
-export const RoundPlanner = () => {
+export const StandardOpenings = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
   return (
     <>
-      <Box as="h2">Round Planner</Box>
+      <Box as="h2">Standard Openings</Box>
       <InitialResources state={state} dispatch={dispatch} />
+      <OpeningsType dispatch={dispatch} />
       <BuildingTypes state={state} dispatch={dispatch} />
       <FinalResources state={state} dispatch={dispatch} />
     </>
