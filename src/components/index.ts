@@ -6,3 +6,4 @@ export * from "./Select";
 export * from "./Text";
 export * from "./InputBase";
 export * from "./Forms";
+export * from "./NavBar";
