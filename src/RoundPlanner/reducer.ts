@@ -10,6 +10,8 @@ export const initialState = {
   buildings: [] as BuildingType[],
   totalCredits: "",
   totalOre: "",
+  totalQic: "",
+  totalPowerBowl3: "",
 };
 export type RoundPlannerState = typeof initialState;
 
@@ -28,6 +30,8 @@ type BuildingType = {
   title: string;
   credits: string;
   ore: string;
+  qic: string;
+  powerBowl3: string;
 };
 
 export type Action =
@@ -67,6 +71,10 @@ export const reducer = (state: RoundPlannerState, action: Action) => {
         buildings: action.value,
         totalCredits: String(sumBy(action.value, (it) => Number(it.credits))),
         totalOre: String(sumBy(action.value, (it) => Number(it.ore))),
+        totalQic: String(sumBy(action.value, (it) => Number(it.qic))),
+        totalPowerBowl3: String(
+          sumBy(action.value, (it) => Number(it.powerBowl3))
+        ),
       };
     }
     case ActionType.AddBuilding: {
@@ -76,6 +84,10 @@ export const reducer = (state: RoundPlannerState, action: Action) => {
         buildings,
         totalCredits: String(sumBy(buildings, (it) => Number(it.credits))),
         totalOre: String(sumBy(buildings, (it) => Number(it.ore))),
+        totalQic: String(sumBy(buildings, (it) => Number(it.qic))),
+        totalPowerBowl3: String(
+          sumBy(buildings, (it) => Number(it.powerBowl3))
+        ),
       };
     }
     case ActionType.RemoveBuilding: {
@@ -85,6 +97,10 @@ export const reducer = (state: RoundPlannerState, action: Action) => {
         buildings,
         totalCredits: String(sumBy(buildings, (it) => Number(it.credits))),
         totalOre: String(sumBy(buildings, (it) => Number(it.ore))),
+        totalQic: String(sumBy(buildings, (it) => Number(it.qic))),
+        totalPowerBowl3: String(
+          sumBy(buildings, (it) => Number(it.powerBowl3))
+        ),
       };
     }
 

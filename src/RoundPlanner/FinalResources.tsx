@@ -21,12 +21,12 @@ export const FinalResources = ({ state }: RoundPlannerProps) => {
           <NumberField
             label={Resources.QIC}
             readOnly
-            value={Number(state.qic)}
+            value={Number(state.qic) - Number(state.totalQic)}
           />
           <NumberField
             label={Resources.PowerBowl3}
             readOnly
-            value={Number(state.powerBowl3)}
+            value={Number(state.powerBowl3) - Number(state.totalPowerBowl3)}
           />
         </Flex>
       </Flex>

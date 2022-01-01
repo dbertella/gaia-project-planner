@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { sumBy } from "lodash";
 import { v4 as uuid } from "uuid";
+import { CrossCircledIcon } from "@radix-ui/react-icons";
 import {
   Box,
   Button,
@@ -18,17 +19,39 @@ const initialState = {
   title: "",
   credits: "",
   ore: "",
+  qic: "",
+  powerBowl3: "",
 };
 
-const MINE = { title: "Mine", credits: "2", ore: "1" };
-const TRADING_STATION = { title: "Trading Station", credits: "3", ore: "2" };
-const RESEARCH_LAB = { title: "Research Lab", credits: "5", ore: "3" };
+const MINE = { powerBowl3: "", qic: "", title: "Mine", credits: "2", ore: "1" };
+const TRADING_STATION = {
+  powerBowl3: "",
+  qic: "",
+  title: "Trading Station",
+  credits: "3",
+  ore: "2",
+};
+const RESEARCH_LAB = {
+  powerBowl3: "",
+  qic: "",
+  title: "Research Lab",
+  credits: "5",
+  ore: "3",
+};
 const PLANETARY_INSTITUTE = {
+  powerBowl3: "",
+  qic: "",
   title: "Planetary Institute",
   credits: "6",
   ore: "4",
 };
-const ACADEMY = { title: "Academy", credits: "6", ore: "6" };
+const ACADEMY = {
+  powerBowl3: "",
+  qic: "",
+  title: "Academy",
+  credits: "6",
+  ore: "6",
+};
 
 // RL+TS+M
 const STANDARD_OPENING_1 = [
@@ -120,12 +143,13 @@ const StandardOpenings = ({
   </Box>
 );
 
-const Building = ({
+const Buildings = ({
   dispatch,
 }: {
   dispatch: RoundPlannerProps["dispatch"];
 }) => {
-  const [{ title, credits, ore }, setInternal] = useState(initialState);
+  const [{ title, credits, ore, qic, powerBowl3 }, setInternal] =
+    useState(initialState);
 
   return (
     <Card css={{ p: "$2" }}>
@@ -152,7 +176,7 @@ const Building = ({
           />
         </Box>
 
-        <Flex gap="4" justify="center">
+        <Flex justify="between">
           <NumberField
             label={Resources.Credits}
             value={credits}
@@ -169,15 +193,32 @@ const Building = ({
               setInternal((state) => ({ ...state, ore: value }));
             }}
           />
+          <NumberField
+            label={Resources.QIC}
+            value={qic}
+            placeholder="0"
+            onChange={({ target: { value } }) => {
+              setInternal((state) => ({ ...state, qic: value }));
+            }}
+          />
+          <NumberField
+            label={Resources.PowerBowl3}
+            value={powerBowl3}
+            placeholder="0"
+            onChange={({ target: { value } }) => {
+              setInternal((state) => ({ ...state, powerBowl3: value }));
+            }}
+          />
         </Flex>
         <Button
           onClick={() => {
             dispatch({
               type: ActionType.AddBuilding,
-              value: { title, credits, ore, id: uuid() },
+              value: { title, credits, ore, qic, powerBowl3, id: uuid() },
             });
             setInternal(initialState);
           }}
+          disabled={!credits && !ore && !qic && !powerBowl3}
         >
           Add
         </Button>
@@ -186,23 +227,112 @@ const Building = ({
   );
 };
 
-const Single = ({
+const Header = ({
   title,
   credits,
   ore,
+  qic,
+  powerBowl3,
   onClick,
 }: {
   title: string;
   credits: string;
   ore: string;
+  qic: string;
+  powerBowl3: string;
   onClick?: () => void;
 }) => (
   <Flex align="center">
-    <Text css={{ flex: 3 }}>{title}</Text>
-    <Text css={{ flex: 1, textAlign: "center" }}>{credits}</Text>
-    <Text css={{ flex: 1, textAlign: "center" }}>{ore}</Text>
+    <Text css={{ flex: 3, fontSize: "$1", fontWeight: 700 }}>{title}</Text>
+    <Text
+      css={{ flex: 1, textAlign: "center", fontSize: "$1", fontWeight: 700 }}
+    >
+      {credits}
+    </Text>
+    <Text
+      css={{ flex: 1, textAlign: "center", fontSize: "$1", fontWeight: 700 }}
+    >
+      {ore || "0"}
+    </Text>
+    <Text
+      css={{ flex: 1, textAlign: "center", fontSize: "$1", fontWeight: 700 }}
+    >
+      {qic || "0"}
+    </Text>
+    <Text
+      css={{ flex: 1, textAlign: "center", fontSize: "$1", fontWeight: 700 }}
+    >
+      {powerBowl3 || "0"}
+    </Text>
+    <Box css={{ flex: 1 }} />
+  </Flex>
+);
+
+const Building = ({
+  title,
+  credits,
+  ore,
+  qic,
+  powerBowl3,
+  onClick,
+}: {
+  title: string;
+  credits: string;
+  ore: string;
+  qic: string;
+  powerBowl3: string;
+  onClick?: () => void;
+}) => (
+  <Flex align="center">
+    <Text css={{ flex: 3, color: "$colors$gray11", fontSize: "$2" }}>
+      {title}
+    </Text>
+    <Text
+      css={{
+        flex: 1,
+        textAlign: "center",
+        color: "$colors$gray11",
+        fontSize: "$2",
+      }}
+    >
+      {credits}
+    </Text>
+    <Text
+      css={{
+        flex: 1,
+        textAlign: "center",
+        color: "$colors$gray11",
+        fontSize: "$2",
+      }}
+    >
+      {ore || "0"}
+    </Text>
+    <Text
+      css={{
+        flex: 1,
+        textAlign: "center",
+        color: "$colors$gray11",
+        fontSize: "$2",
+      }}
+    >
+      {qic || "0"}
+    </Text>
+    <Text
+      css={{
+        flex: 1,
+        textAlign: "center",
+        color: "$colors$gray11",
+        fontSize: "$2",
+      }}
+    >
+      {powerBowl3 || "0"}
+    </Text>
     <Box css={{ flex: 1 }}>
-      {onClick && <Button onClick={onClick}>Remove</Button>}
+      {onClick && (
+        <Button onClick={onClick}>
+          <CrossCircledIcon />
+        </Button>
+      )}
     </Box>
   </Flex>
 );
@@ -217,24 +347,36 @@ const Planned = ({
   if (buildings.length === 0) return null;
   return (
     <Flex direction="column" gap="1">
-      <Single title="Title" credits="Credits" ore="Ore" />
+      <Box>
+        <Header
+          title="Title"
+          credits={Resources.Credits}
+          ore={Resources.Ore}
+          qic={Resources.QIC}
+          powerBowl3="P.B.3"
+        />
+      </Box>
       <Box css={{ borderBottom: "1px solid $colors$gray2" }} />
       {buildings.map((b, i) => (
-        <Single
+        <Building
           key={b.id}
           title={`# ${i + 1} · ${b.title}`}
           credits={b.credits}
           ore={b.ore}
+          qic={b.qic}
+          powerBowl3={b.powerBowl3}
           onClick={() =>
             dispatch({ type: ActionType.RemoveBuilding, value: b.id })
           }
         />
       ))}
       <Box css={{ borderBottom: "1px solid $colors$gray2" }} />
-      <Single
+      <Header
         title="Total Planned"
         credits={String(sumBy(buildings, (it) => Number(it.credits)))}
         ore={String(sumBy(buildings, (it) => Number(it.ore)))}
+        qic={String(sumBy(buildings, (it) => Number(it.qic)))}
+        powerBowl3={String(sumBy(buildings, (it) => Number(it.powerBowl3)))}
       />
     </Flex>
   );
@@ -245,7 +387,7 @@ export const BuildingTypes = ({ state, dispatch }: RoundPlannerProps) => {
     <Flex direction="column" gap="2">
       <Box as="h3">Buildings</Box>
       <StandardOpenings dispatch={dispatch} />
-      <Building dispatch={dispatch} />
+      <Buildings dispatch={dispatch} />
       <Planned buildings={state.buildings} dispatch={dispatch} />
     </Flex>
   );
