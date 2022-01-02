@@ -48,7 +48,7 @@ export const Text = styled("span", {
     },
     variant: {
       red: {
-        color: "$red",
+        color: "$red9",
       },
       blue: {
         color: "$blue",

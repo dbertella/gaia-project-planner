@@ -39,6 +39,7 @@ export const RoundPlanner = () => {
       <Flex justify="between" align="center">
         <Box as="h2">Round Planner</Box>
         <Button
+          variant="red"
           onClick={() =>
             dispatch({ type: ActionType.Reset, value: initialState })
           }

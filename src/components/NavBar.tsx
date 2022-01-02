@@ -1,6 +1,11 @@
-import { LightningBoltIcon, MixIcon, RulerSquareIcon } from "@radix-ui/react-icons";
+import {
+  LightningBoltIcon,
+  MixIcon,
+  RulerSquareIcon,
+} from "@radix-ui/react-icons";
 import { styled } from "@stitches/react";
 import { NavLink } from "react-router-dom";
+import useDetectKeyboardOpen from "use-detect-keyboard-open";
 import { Flex, Box, Text } from ".";
 
 const UiLink = styled(Box, {
@@ -30,10 +35,11 @@ const Link = ({
 );
 
 export const NavBar = () => {
+  const isKeyboardOpen = useDetectKeyboardOpen();
   return (
     <Flex
       css={{
-        position: "sticky",
+        position: isKeyboardOpen ? "static" : "sticky",
         bottom: 0,
         height: 50,
         background: "rgba(255,255,255,0.7)",

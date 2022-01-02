@@ -1,6 +1,6 @@
 import { createStitches } from "@stitches/react";
 import type * as Stitches from "@stitches/react";
-import { gray } from "@radix-ui/colors";
+import { gray, red } from "@radix-ui/colors";
 
 export const {
   styled,
@@ -63,7 +63,7 @@ export const {
       background: "white",
       ...gray,
       blue: "blue",
-      red: "red",
+      ...red,
       green: "green",
       panel: "ghostwhite",
     },

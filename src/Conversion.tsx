@@ -159,7 +159,7 @@ export const Conversion = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
   return (
     <>
-      <h3>Free Conversions</h3>
+      <h2>Free Conversions</h2>
       <Flex gap="2">
         <Flex gap="1" direction="column">
           <ResourceSelect

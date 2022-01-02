@@ -107,10 +107,10 @@ export const InputBase = styled("input", {
     },
     state: {
       invalid: {
-        boxShadow: "inset 0 0 0 1px $colors$red",
+        boxShadow: "inset 0 0 0 1px $colors$red9",
         "&:focus": {
           boxShadow:
-            "inset 0px 0px 0px 1px $colors$red, 0px 0px 0px 1px $colors$red",
+            "inset 0px 0px 0px 1px $colors$red9, 0px 0px 0px 1px $colors$red9",
         },
       },
       valid: {

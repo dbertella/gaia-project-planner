@@ -76,11 +76,6 @@ export const Button = styled("button", {
         "&:focus": {
           boxShadow: "inset 0 0 0 1px $colors$gray8, 0 0 0 1px $colors$gray8",
         },
-        '&[data-radix-popover-trigger][data-state="open"], &[data-radix-dropdown-menu-trigger][data-state="open"]':
-          {
-            backgroundColor: "$gray4",
-            boxShadow: "inset 0 0 0 1px $colors$gray8",
-          },
       },
       blue: {
         backgroundColor: "$blue",
@@ -98,11 +93,6 @@ export const Button = styled("button", {
         "&:focus": {
           boxShadow: "inset 0 0 0 1px $colors$blue, 0 0 0 1px $colors$blue",
         },
-        '&[data-radix-popover-trigger][data-state="open"], &[data-radix-dropdown-menu-trigger][data-state="open"]':
-          {
-            backgroundColor: "$blue",
-            boxShadow: "inset 0 0 0 1px $colors$blue",
-          },
       },
       green: {
         backgroundColor: "$green",
@@ -120,33 +110,23 @@ export const Button = styled("button", {
         "&:focus": {
           boxShadow: "inset 0 0 0 1px $colors$green, 0 0 0 1px $colors$green",
         },
-        '&[data-radix-popover-trigger][data-state="open"], &[data-radix-dropdown-menu-trigger][data-state="open"]':
-          {
-            backgroundColor: "$green",
-            boxShadow: "inset 0 0 0 1px $colors$green",
-          },
       },
       red: {
         backgroundColor: "$background",
         boxShadow: "inset 0 0 0 1px $colors$gray7",
-        color: "$red",
+        color: "$red11",
         "@hover": {
           "&:hover": {
             boxShadow: "inset 0 0 0 1px $colors$gray8",
           },
         },
         "&:active": {
-          backgroundColor: "$red",
-          boxShadow: "inset 0 0 0 1px $colors$red",
+          backgroundColor: "$red3",
+          boxShadow: "inset 0 0 0 1px $colors$red8",
         },
         "&:focus": {
-          boxShadow: "inset 0 0 0 1px $colors$red, 0 0 0 1px $colors$red",
+          boxShadow: "inset 0 0 0 1px $colors$red8, 0 0 0 1px $colors$red8",
         },
-        '&[data-radix-popover-trigger][data-state="open"], &[data-radix-dropdown-menu-trigger][data-state="open"]':
-          {
-            backgroundColor: "$red",
-            boxShadow: "inset 0 0 0 1px $colors$red",
-          },
       },
       transparentWhite: {
         backgroundColor: "hsla(0,100%,100%,.2)",
