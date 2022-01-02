@@ -16,6 +16,10 @@ const initialState = {
   totalOre: "7",
   totalQic: "1",
   totalPowerBowl3: "",
+  nextCredits: "",
+  nextOre: "",
+  nextQic: "",
+  nextPowerBowl3: "",
 };
 export const StandardOpenings = () => {
   const [state, dispatch] = useReducer(reducer, initialState);

@@ -21,6 +21,10 @@ export type RoundPlannerState = {
   totalOre: string;
   totalQic: string;
   totalPowerBowl3: string;
+  nextCredits: string;
+  nextOre: string;
+  nextQic: string;
+  nextPowerBowl3: string;
 };
 
 export const ActionType = {
@@ -28,9 +32,14 @@ export const ActionType = {
   Ore: Resources.Ore,
   QIC: Resources.QIC,
   PowerBowl3: Resources.PowerBowl3,
+  NextCredits: "NextCredits",
+  NextOre: "NextOre",
+  NextQIC: "NextQIC",
+  NextPowerBowl3: "NextPowerBowl3",
   Buildings: "Buildings",
   AddBuilding: "AddBuilding",
   RemoveBuilding: "RemoveBuilding",
+  Reset: "Reset",
 } as const;
 
 export type Action =
@@ -38,9 +47,14 @@ export type Action =
   | { type: typeof ActionType.Ore; value: string }
   | { type: typeof ActionType.QIC; value: string }
   | { type: typeof ActionType.PowerBowl3; value: string }
+  | { type: typeof ActionType.NextCredits; value: string }
+  | { type: typeof ActionType.NextOre; value: string }
+  | { type: typeof ActionType.NextQIC; value: string }
+  | { type: typeof ActionType.NextPowerBowl3; value: string }
   | { type: typeof ActionType.Buildings; value: BuildingType[] }
   | { type: typeof ActionType.AddBuilding; value: BuildingType }
-  | { type: typeof ActionType.RemoveBuilding; value: string };
+  | { type: typeof ActionType.RemoveBuilding; value: string }
+  | { type: typeof ActionType.Reset; value: RoundPlannerState };
 
 export const reducer = (state: RoundPlannerState, action: Action) => {
   switch (action.type) {
@@ -63,6 +77,26 @@ export const reducer = (state: RoundPlannerState, action: Action) => {
       return {
         ...state,
         powerBowl3: action.value,
+      };
+    case ActionType.NextCredits:
+      return {
+        ...state,
+        nextCredits: action.value,
+      };
+    case ActionType.NextOre:
+      return {
+        ...state,
+        nextOre: action.value,
+      };
+    case ActionType.NextQIC:
+      return {
+        ...state,
+        nextQic: action.value,
+      };
+    case ActionType.NextPowerBowl3:
+      return {
+        ...state,
+        nextPowerBowl3: action.value,
       };
     case ActionType.Buildings: {
       return {
@@ -102,6 +136,8 @@ export const reducer = (state: RoundPlannerState, action: Action) => {
         ),
       };
     }
+    case ActionType.Reset:
+      return action.value;
 
     default:
       throw new Error();

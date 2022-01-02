@@ -4,7 +4,7 @@ import { ComponentProps, forwardRef } from "react";
 
 const SelectWrapper = styled("div", {
   backgroundColor: "$background",
-  boxShadow: "inset 0 0 0 1px $colors$gray1",
+  boxShadow: "inset 0 0 0 1px $colors$gray7",
   color: "$text",
   fontFamily: "$untitled",
   fontSize: "$1",
