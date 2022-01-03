@@ -84,6 +84,9 @@ export const InputBase = styled("input", {
       },
     },
     variant: {
+      bold: {
+        fontWeight: 700,
+      },
       ghost: {
         boxShadow: "none",
         backgroundColor: "transparent",

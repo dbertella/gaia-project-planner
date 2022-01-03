@@ -4,7 +4,7 @@ import { Box, Label, InputBase } from "..";
 export const TextField = forwardRef<
   HTMLInputElement,
   {
-    label?: string;
+    label?: string | null;
   } & ComponentProps<typeof InputBase>
 >(({ label, value, onChange, ...rest }, ref) => (
   <Box>

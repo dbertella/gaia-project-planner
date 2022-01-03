@@ -9,9 +9,13 @@ import {
   Flex,
   Text,
   TextField,
-  NumberField,
+  CreditsInput,
+  OreInput,
+  PowerBowl3Input,
+  QICInput,
   Label,
 } from "../components";
+
 import {
   ACADEMY,
   MINE,
@@ -64,32 +68,28 @@ const Buildings = ({
         </Box>
 
         <Flex justify="between">
-          <NumberField
-            label={Resources.Credits}
+          <CreditsInput
             value={credits}
             placeholder="2"
             onChange={({ target: { value } }) => {
               setInternal((state) => ({ ...state, credits: value }));
             }}
           />
-          <NumberField
-            label={Resources.Ore}
+          <OreInput
             value={ore}
             placeholder="1"
             onChange={({ target: { value } }) => {
               setInternal((state) => ({ ...state, ore: value }));
             }}
           />
-          <NumberField
-            label={Resources.QIC}
+          <QICInput
             value={qic}
             placeholder="0"
             onChange={({ target: { value } }) => {
               setInternal((state) => ({ ...state, qic: value }));
             }}
           />
-          <NumberField
-            label={Resources.PowerBowl3}
+          <PowerBowl3Input
             value={powerBowl3}
             placeholder="0"
             onChange={({ target: { value } }) => {

@@ -2,7 +2,6 @@ import { useEffect, useReducer } from "react";
 import { Box, Button, Flex } from "../components";
 import { BuildingTypes } from "./BuildingTypes";
 import { FinalResources } from "./FinalResources";
-import { NextRoundResources } from "./NextRoundResources";
 import { InitialResources } from "./InitialResources";
 import { ActionType, reducer } from "../components/planner-reducer";
 
@@ -50,7 +49,7 @@ export const RoundPlanner = () => {
       <InitialResources state={state} dispatch={dispatch} />
       <BuildingTypes state={state} dispatch={dispatch} />
       <FinalResources state={state} dispatch={dispatch} />
-      <NextRoundResources state={state} dispatch={dispatch} />
+      {/* <NextRoundResources state={state} dispatch={dispatch} /> */}
     </>
   );
 };

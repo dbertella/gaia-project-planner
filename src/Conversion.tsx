@@ -1,5 +1,14 @@
 import { useReducer } from "react";
-import { Flex, Select, Text, TextField } from "./components";
+import {
+  CreditsInput,
+  Flex,
+  OreInput,
+  PowerBowl3Input,
+  QICInput,
+  Select,
+  Text,
+  KnowledgeInput,
+} from "./components";
 import {
   ConversionKind,
   Conversions,
@@ -7,6 +16,16 @@ import {
   Resources,
 } from "./constants";
 import { CSS } from "./stitches.config";
+
+const InputMap = {
+  Credits: CreditsInput,
+  Ore: OreInput,
+  QIC: QICInput,
+  PowerBowl1: PowerBowl3Input,
+  PowerBowl2: PowerBowl3Input,
+  PowerBowl3: PowerBowl3Input,
+  Knowledge: KnowledgeInput,
+};
 
 const ResourceSelect = ({
   onChange,
@@ -157,6 +176,8 @@ const reducer = (state: typeof initialState, action: Action) => {
 
 export const Conversion = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
+  const FromInput = InputMap[state.selectFrom];
+  const ToInput = InputMap[state.selectTo];
   return (
     <>
       <h2>Free Conversions</h2>
@@ -169,10 +190,8 @@ export const Conversion = () => {
             }}
             options={state.selectFromOptions}
           />
-          <TextField
-            size="2"
-            inputMode="numeric"
-            pattern="[0-9]*"
+          <FromInput
+            label={null}
             value={state.inputFrom}
             onChange={({ target: { value } }) => {
               dispatch({ type: ActionType.InputFrom, value });
@@ -187,10 +206,8 @@ export const Conversion = () => {
             }}
             options={state.selectToOptions}
           />
-          <TextField
-            size="2"
-            inputMode="numeric"
-            pattern="[0-9]*"
+          <ToInput
+            label={null}
             value={state.inputTo}
             onChange={({ target: { value } }) => {
               dispatch({ type: ActionType.InputTo, value });
@@ -202,7 +219,7 @@ export const Conversion = () => {
             <Text size="1" css={{ height: "$4" }}>
               ({Resources[state.selectFrom]})
             </Text>
-            <TextField size="2" value={state.mod} readOnly />
+            <FromInput label={null} value={state.mod} readOnly />
           </Flex>
         )}
       </Flex>

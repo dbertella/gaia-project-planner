@@ -1,6 +1,11 @@
-import { Box, Flex } from "../components";
-import { NumberField } from "../components/Forms/NumberField";
-import { Resources } from "../constants";
+import {
+  Box,
+  CreditsInput,
+  Flex,
+  OreInput,
+  PowerBowl3Input,
+  QICInput,
+} from "../components";
 import { ActionType, RoundPlannerProps } from "../components/planner-reducer";
 
 export const InitialResources = ({ state, dispatch }: RoundPlannerProps) => {
@@ -9,29 +14,25 @@ export const InitialResources = ({ state, dispatch }: RoundPlannerProps) => {
       <Box as="h3">Initial Resources</Box>
       <Flex direction="column" gap="2">
         <Flex justify="between">
-          <NumberField
-            label={Resources.Credits}
+          <CreditsInput
             value={state.credits}
             onChange={({ target: { value } }) => {
               dispatch({ type: ActionType.Credits, value });
             }}
           />
-          <NumberField
-            label={Resources.Ore}
+          <OreInput
             value={state.ore}
             onChange={({ target: { value } }) => {
               dispatch({ type: ActionType.Ore, value });
             }}
           />
-          <NumberField
-            label={Resources.QIC}
+          <QICInput
             value={state.qic}
             onChange={({ target: { value } }) => {
               dispatch({ type: ActionType.QIC, value });
             }}
           />
-          <NumberField
-            label={Resources.PowerBowl3}
+          <PowerBowl3Input
             value={state.powerBowl3}
             onChange={({ target: { value } }) => {
               dispatch({ type: ActionType.PowerBowl3, value });
